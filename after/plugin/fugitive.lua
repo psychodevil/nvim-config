@@ -17,6 +17,11 @@ autocmd("BufWinEnter", {
             vim.cmd.Git('push')
         end, opts)
 
+        -- add all modified files to the commit
+        vim.keymap.set("n", "<leader>ca", function()
+            vim.cmd.Git('add', '-A')
+        end, opts)
+
         -- rebase always
         vim.keymap.set("n", "<leader>P", function()
             vim.cmd.Git({'pull',  '--rebase'})
